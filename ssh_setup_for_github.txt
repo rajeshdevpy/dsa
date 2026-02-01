@@ -1,0 +1,115 @@
+✅ BEST PRACTICE (Recommended): SSH with separate keys per account
+
+This is industry-standard and the cleanest solution.
+
+1️⃣ Generate separate SSH keys (one per account)
+ssh-keygen -t ed25519 -C "rajeshdevpy@gmail.com" -f ~/.ssh/id_ed25519_rajeshdevpy
+ssh-keygen -t ed25519 -C "mfsrajeshkumar@gmail.com" -f ~/.ssh/id_ed25519_mfsrajeshkumar
+
+
+You’ll get:
+
+~/.ssh/id_ed25519_rajeshdevpy
+~/.ssh/id_ed25519_mfsrajeshkumar
+
+2️⃣ Add keys to SSH agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519_rajeshdevpy
+ssh-add ~/.ssh/id_ed25519_mfsrajeshkumar
+
+3️⃣ Add public keys to GitHub (VERY IMPORTANT)
+
+Copy each key:
+
+cat ~/.ssh/id_ed25519_rajeshdevpy.pub
+cat ~/.ssh/id_ed25519_mfsrajeshkumar.pub
+
+
+Then:
+
+GitHub → Settings → SSH and GPG keys
+
+Add correct key to correct account
+
+4️⃣ Configure SSH config (this is the MAGIC)
+
+Create / edit:
+
+nano ~/.ssh/config
+
+
+Add:
+
+# Account 1 – rajeshdevpy
+Host github-rajeshdevpy
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_rajeshdevpy
+
+# Account 2 – mfsrajeshkumar
+Host github-mfsrajeshkumar
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_mfsrajeshkumar
+
+5️⃣ Update repo remote URL (THIS FIXES 403)
+
+For repo owned by rajeshdevpy:
+
+git remote set-url origin git@github-rajeshdevpy:rajeshdevpy/dsa.git
+
+
+For repo owned by mfsrajeshkumar:
+
+git remote set-url origin git@github-mfsrajeshkumar:mfsrajeshkumar/dsa.git
+
+6️⃣ Set Git identity per repo (optional but clean)
+
+Inside each repo:
+
+git config user.name "Rajesh Kumar"
+git config user.email "rajeshdevpy@gmail.com"
+
+
+or for second repo:
+
+git config user.email "mfsrajeshkumar@gmail.com"
+
+7️⃣ Test authentication (confidence check)
+ssh -T git@github-rajeshdevpy
+ssh -T git@github-mfsrajeshkumar
+
+
+You should see:
+
+Hi rajeshdevpy! You've successfully authenticated.
+
+❌ What NOT to do (common mistakes)
+
+❌ Mixing HTTPS + SSH
+
+❌ Relying on credential cache
+
+❌ Switching accounts via browser login
+
+❌ Using same SSH key for both accounts
+
+TL;DR (Minimal commands that matter)
+~/.ssh/config
+Host github-rajeshdevpy
+    IdentityFile ~/.ssh/id_ed25519_rajeshdevpy
+
+git remote set-url origin git@github-rajeshdevpy:rajeshdevpy/dsa.git
+
+⭐ Final Advice (Senior-level)
+
+For developers working with multiple clients / orgs / GitHub accounts,
+SSH aliases are mandatory, not optional.
+
+If you want, paste:
+
+git remote -v
+
+
+and tell me which repo belongs to which account —
+I’ll give you the exact single command to fix it.
