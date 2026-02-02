@@ -8,3 +8,13 @@ https://www.youtube.com/watch?v=Vx2zPMPvmug                                     
 https://coggle.it/diagram/ZtMDf8rvLIwlbc-0/t/backend-engineering/44ac2c05e0c7fcdd9920723c49ec128e5a65bcc430a145638eb01f5c64a884a1  -----> Backend Roadmap
 
 https://www.youtube.com/watch?v=_gQaygjm_hg                                          -----> 7 Tips for API design
+
+
+
+# Nitman Python/Django Interview Questions:
+https://www.youtube.com/watch?v=YeupGcOW-3k                                         ------> 52 Python Interview Questions (Theory)
+https://www.youtube.com/watch?v=ttBOHeTKH6g                                         ------> 15 Additional 15 Questions (Theory)
+
+
+https://www.youtube.com/watch?v=UFAwAw-7Zpw                                        --------> 10 Coding Questions(Coding Question)
+https://youtu.be/s3nW1kdTT7w?si=UauQIggV_wRLPPA1                                   --------> 20 Mostly asked coding questions
