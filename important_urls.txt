@@ -1,0 +1,10 @@
+https://pythontutor.com/visualize.html#mode=display                                  -----> Python Tutor
+https://www.youtube.com/watch?v=0sOvCWFmrtA                                          -----> API development
+https://www.youtube.com/watch?v=OtYEY2htIjM&list=PLhR2IpV1b2FwWwviBHRrR118YAaSlyhTU  -----> Python DSA
+
+https://www.youtube.com/watch?v=XvFmUE-36Kc                                          -----> API design and architecture
+https://www.youtube.com/watch?v=Vx2zPMPvmug                                          -----> Redis Crash Course
+
+https://coggle.it/diagram/ZtMDf8rvLIwlbc-0/t/backend-engineering/44ac2c05e0c7fcdd9920723c49ec128e5a65bcc430a145638eb01f5c64a884a1  -----> Backend Roadmap
+
+https://www.youtube.com/watch?v=_gQaygjm_hg                                          -----> 7 Tips for API design
