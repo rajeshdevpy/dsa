@@ -18,10 +18,20 @@ def get_factors(number):
 
 if __name__ == "__main__":
     number = 15
-    print(get_factors(number))
+    # print(get_factors(number))
 
 
 # version 2 --> using sqrt function
+
+def get_divisors(number):
+    divisors = []
+    for num in range(1, int(sqrt(number)) + 1):
+        if number % num == 0:
+            divisors.append(num)
+            divisors.append(number//num)
+    divisors.sort()
+    return divisors
+print(get_divisors(21))
 
 
 # Understands 
