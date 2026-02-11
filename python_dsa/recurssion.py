@@ -13,7 +13,7 @@ def get_factorial(num):
         return 1
     return num * get_factorial(num - 1)
 
-print(get_factorial(5))
+# print(get_factorial(5))
 
 def reverse_list_elements(nums, left, right):
     if left >= right:
@@ -21,4 +21,20 @@ def reverse_list_elements(nums, left, right):
     nums[left], nums[right] = nums[right], nums[left]
     return reverse_list_elements(nums, left + 1, right -1)
 
-print(reverse_list_elements([9, 2, 5, 4, 1, 0, 7], 0, 6))
+# print(reverse_list_elements([9, 2, 5, 4, 1, 0, 7], 0, 6))
+
+def check_palindrome(str_val, left, right):
+    if left >= right:
+        return True
+    if str_val[left] != str_val[right]:
+        return False
+    return check_palindrome(str_val, left + 1, right - 1)
+
+str_val1 = "nitin"
+str_val = "nitinq"
+print(check_palindrome(str_val, 0, len(str_val) - 1))
+
+# Head and tail recurssion, backtracking, stacked space
+
+def get_fibonacci_series():
+    pass
