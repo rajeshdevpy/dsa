@@ -10,3 +10,5 @@ def selection_sort(nums):
     return nums
 
 print(selection_sort(nums))
+
+
