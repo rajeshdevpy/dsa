@@ -1,0 +1,87 @@
+DAY 1 - PYTHON MEMORY MODEL NOTES
+
+PYTHON VARIABLE MODEL
+A Python variable does not store the actual value.
+It stores a reference to an object.
+Objects are stored in heap memory.
+Variable names exist inside namespace dictionaries.
+The namespace maps: variable name → reference → object.
+
+Example:
+a = 10
+
+Integer object 10 exists in heap.
+Variable 'a' stores reference to that object.
+REFERENCE COUNTING
+Every object in CPython has a reference count.
+When a new reference points to the object, refcount increases.
+When a reference is removed, refcount decreases.
+When refcount becomes zero, object is destroyed.
+
+Example:
+a = 10
+b = a
+
+One integer object exists.
+Two references (a and b).
+Reference count increases.
+
+MUTABLE VS IMMUTABLE
+
+Immutable types:
+int, str, tuple
+
+Cannot be modified in place.
+Any change creates a new object.
+No shared mutation problem.
+
+Mutable types:
+list, dict, set
+Can be modified in place.
+
+If multiple variables reference the same object,
+mutation affects all references.
+
+SHALLOW COPY
+
+Example:
+b = a[:]
+
+Creates a new outer container.
+Inner objects remain shared references.
+Nested mutable objects are still shared.
+Modifying nested objects affects both copies.
+
+DEEP COPY
+
+Example:
+import copy
+b = copy.deepcopy(a)
+
+Recursively copies entire object structure.
+No shared nested references.
+Prevents mutation side effects.
+Slower than shallow copy.
+HEAP AND NAMESPACE MODEL
+
+Memory structure:
+
+Heap contains objects.
+Namespace contains variable names.
+Variable → reference → object.
+
+Important:
+
+"del a" removes the reference.
+Object survives if other references exist.
+Object is destroyed only when reference count becomes zero.
+
+KEY MENTAL SHIFT
+Think in terms of:
+Object creation
+Reference count changes
+Heap allocation
+Mutation behavior
+Copy depth
+
+Do not think in terms of “value copying”.
