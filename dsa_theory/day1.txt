@@ -1,0 +1,13 @@
+In python we havce 2 type of data structures
+1. Built In:
+    List (Ordered, Indexed, not hashable, Good for different operations like removing and adding new elements)
+    Tuple (Ordered, Indexed, hashable, Used for stop accidental changes)
+    Dict(Ordered, Key --> Only allowed which is hashable, mostly immutable data types)
+    Set(Unordered, Used for perform set operations, Only hashable elements are allowed)
+
+2. User Defined 
+    stack  (LIFO--> Last In First Out, FILO--> First In Last Out)
+    queue (FIFO--> First In First Out)
+    linked List
+    Graph
+    Tree
