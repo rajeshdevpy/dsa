@@ -7,7 +7,10 @@ In python we havce 2 type of data structures
 
 2. User Defined 
     stack  (LIFO--> Last In First Out, FILO--> First In Last Out)
-    queue (FIFO--> First In First Out)
+    # Using list 
+    push --> append
+    pop --> pop
+    queue (FIFO--> First In First Out, LILO--> Last In Last Out)
     linked List
     Graph
     Tree
