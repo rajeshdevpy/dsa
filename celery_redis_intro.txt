@@ -1,0 +1,2 @@
+Introduction about celery (worker)
+redis (Message Queue)
