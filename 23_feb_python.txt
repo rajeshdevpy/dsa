@@ -1,0 +1,155 @@
+🚀 Today’s Python Topic:
+✅ List Comprehensions + Dictionary Comprehensions (Pro Level Python)
+
+These are very important for:
+
+Clean code
+
+Interviews
+
+Writing professional Python
+
+Data processing
+
+Backend development
+
+🔹 1️⃣ List Comprehension (Basic)
+Normal way:
+numbers = [1, 2, 3, 4, 5]
+
+squares = []
+for n in numbers:
+    squares.append(n * n)
+
+print(squares)
+Pythonic way:
+numbers = [1, 2, 3, 4, 5]
+
+squares = [n * n for n in numbers]
+
+print(squares)
+
+🔥 Cleaner
+🔥 Shorter
+🔥 Professional
+
+🔹 2️⃣ With Condition (Very Important)
+Get only even numbers
+numbers = [1, 2, 3, 4, 5, 6]
+
+evens = [n for n in numbers if n % 2 == 0]
+
+print(evens)
+
+Output:
+
+[2, 4, 6]
+🔹 3️⃣ Advanced Condition
+numbers = [1, 2, 3, 4, 5]
+
+result = ["Even" if n % 2 == 0 else "Odd" for n in numbers]
+
+print(result)
+
+Output:
+
+['Odd', 'Even', 'Odd', 'Even', 'Odd']
+
+This is commonly asked in interviews.
+
+🔹 4️⃣ Dictionary Comprehension
+Normal way:
+numbers = [1, 2, 3, 4]
+
+square_dict = {}
+
+for n in numbers:
+    square_dict[n] = n * n
+
+print(square_dict)
+Professional way:
+numbers = [1, 2, 3, 4]
+
+square_dict = {n: n * n for n in numbers}
+
+print(square_dict)
+
+Output:
+
+{1: 1, 2: 4, 3: 9, 4: 16}
+🔹 5️⃣ Real-World Example (Very Important)
+
+Remove empty strings:
+
+names = ["Raj", "", "Amit", "", "Neha"]
+
+cleaned = [name for name in names if name]
+
+print(cleaned)
+
+Output:
+
+['Raj', 'Amit', 'Neha']
+
+Used in:
+
+APIs
+
+Forms
+
+Data cleaning
+
+Backend projects
+
+🎯 Today’s Practice Task (Do This Now)
+Task 1:
+
+Create a list from 1 to 20 and:
+
+Store only numbers divisible by 3
+
+Task 2:
+
+Given:
+
+words = ["apple", "banana", "kiwi", "mango"]
+
+Create a dictionary:
+
+Key → word
+
+Value → length of word
+
+Task 3 (Professional Level):
+
+Given:
+
+emails = ["raj@gmail.com", "test@yahoo.com", "admin@gmail.com"]
+
+Create a list that only contains emails from gmail.
+
+If you solve these without help, you’re improving fast 💪
+
+If you want, tomorrow we can learn:
+
+🔥 Lambda functions
+
+🔥 map(), filter()
+
+🔥 Exception handling (Professional way)
+
+🔥 File handling
+
+🔥 OOP basics
+
+🔥 Decorators (Advanced)
+
+Tell me your level:
+
+Beginner
+
+Intermediate
+
+Working professional (backend focus)
+
+I’ll customize daily learning for you, Raj 🚀
