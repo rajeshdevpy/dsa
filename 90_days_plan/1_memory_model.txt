@@ -1,0 +1,173 @@
+🔥 DAY 1 PLAN (6 Hours Structured)
+------------------------------------------------------------------------
+🧠 Session 1 (2 Hours)
+------------------------------------------------------------------------
+
+Python Memory Model – REAL Understanding
+1️⃣ What is an Object in Python?
+
+Understand clearly:
+
+Everything is an object
+
+Variable ≠ object
+
+Variable = reference (pointer)
+
+Object lives in heap
+
+Study & practice:
+
+a = 10
+b = a
+a = 20
+print(b)
+
+You must understand:
+
+Why b still prints 10
+
+What changed in memory
+
+2️⃣ Reference Counting
+
+Test this:
+
+import sys
+
+a = []
+print(sys.getrefcount(a))
+b = a
+print(sys.getrefcount(a))
+
+Understand:
+
+Why count increases
+
+What happens when you del b
+
+3️⃣ Immutable vs Mutable Deep Understanding
+
+Test:
+
+a = [1, 2, 3]
+b = a
+b.append(4)
+print(a)
+
+Then:
+
+a = 10
+b = a
+b = 20
+print(a)
+
+You must clearly explain:
+
+Why list behaves differently from int
+------------------------------------------------------------------------
+🧮 Session 2 (1.5 Hours)
+------------------------------------------------------------------------
+
+Recursion & Stack Understanding
+
+Implement:
+
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+
+print(factorial(5))
+
+Now:
+
+Draw call stack manually
+
+Understand stack frame
+
+Understand stack unwinding
+
+Then implement:
+
+def reverse_string(s):
+    if len(s) == 0:
+        return s
+    return reverse_string(s[1:]) + s[0]
+
+Explain execution flow step-by-step.
+
+------------------------------------------------------------------------
+🏗 Session 3 (1.5 Hours)
+------------------------------------------------------------------------
+
+Django Internal Understanding (Conceptual)
+
+Study:
+
+What happens when request hits server?
+
+WSGI vs ASGI
+
+Middleware execution order
+
+How ORM converts to SQL
+
+Then run in your project:
+
+print(MyModel.objects.filter(id=1).query)
+
+Observe raw SQL.
+
+Understand:
+
+Lazy evaluation
+
+When query actually hits DB
+
+------------------------------------------------------------------------
+🧪 Session 4 (1 Hour)
+------------------------------------------------------------------------
+
+Debug Like Senior Engineer
+
+Take one real module in Planitlocal:
+
+Add proper logging
+
+Print execution time
+
+Add try/except with structured error message
+
+Goal:
+Think in production mindset.
+
+🎯 Day 1 Outcome Required
+
+By end of today, you must be able to answer:
+
+What is stored in stack vs heap in Python?
+
+How reference counting works?
+
+Why immutable behaves differently?
+
+How recursion uses stack memory?
+
+When Django ORM hits DB?
+
+If you cannot answer clearly — Day 1 incomplete.
+
+No rushing.
+
+Do it deeply.
+
+When you finish Session 1, come back and explain:
+
+👉 What exactly happens in memory when you do:
+
+a = 10
+b = a
+a = 20
+
+Explain like engineer. Not surface level.
