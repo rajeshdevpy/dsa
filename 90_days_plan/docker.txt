@@ -1,0 +1,191 @@
+🔥 Docker Basics for Django + Celery + Redis Setup
+
+You won’t just “run containers.”
+You will understand architecture.
+
+🧠 1️⃣ Core Docker Concepts (Must Be Clear)
+
+Before writing anything, understand:
+
+Image
+
+Blueprint (static template).
+
+Container
+
+Running instance of image.
+
+Dockerfile
+
+Instructions to build image.
+
+docker-compose
+
+Orchestrates multiple services.
+
+Volume
+
+Persistent storage.
+
+Network
+
+Allows containers to talk to each other.
+
+🏗 Architecture for Your Stack
+
+For Django + Celery + Redis:
+
+You need 3 services:
+
+web → Django (Gunicorn)
+
+redis → Broker
+
+celery → Worker
+
+Optional:
+4. celery-beat
+
+Architecture:
+
+Browser
+   ↓
+Django (web)
+   ↓
+Redis (broker)
+   ↓
+Celery worker
+📁 Minimal Project Structure
+project/
+│
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── manage.py
+🧱 2️⃣ Basic Dockerfile (Django)
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["gunicorn", "project.wsgi:application", "--bind", "0.0.0.0:8000"]
+
+Understand:
+
+Base image
+
+Layer caching
+
+WORKDIR
+
+COPY
+
+CMD
+
+🔧 3️⃣ docker-compose.yml (Core Part)
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: gunicorn project.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: .
+    command: celery -A project worker --loglevel=info
+    depends_on:
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+Key understanding:
+
+redis://redis:6379/0
+
+redis = service name
+
+Docker network auto-resolves it
+
+🚀 4️⃣ Run Everything
+docker-compose build
+docker-compose up
+🧠 Important Concepts To Learn Today
+1️⃣ Why separate containers?
+
+Isolation + scalability.
+
+2️⃣ Why not localhost?
+
+Inside container, localhost means that container only.
+
+3️⃣ How Celery connects?
+
+Through broker URL using Docker network DNS.
+
+4️⃣ How scaling works?
+
+You can scale worker:
+
+docker-compose up --scale celery=3
+🔬 5️⃣ Test Task Example
+
+In Django:
+
+from celery import shared_task
+
+@shared_task
+def add(x, y):
+    return x + y
+
+Run from shell:
+
+add.delay(4, 5)
+
+Check worker logs.
+
+🎯 Today’s Learning Goals
+
+By end of today, you must:
+
+Explain Docker image vs container
+
+Explain why Redis hostname is redis
+
+Explain how Celery worker runs separately
+
+Start and stop multi-container app confidently
+
+⚠ Senior-Level Thinking
+
+Understand this deeply:
+
+If your Celery task is CPU-heavy,
+and you run 4 workers inside one container,
+and host has 2 cores,
+what happens?
+
+Think before answering.
+
+If you want, tomorrow we go:
+
+👉 Docker networking deep dive
+👉 Production-grade docker-compose
+👉 Multi-stage builds
+👉 Env separation (dev vs prod)
